@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" fill="none">
+  <style>
+    :root { --ink: #365b47; --paper: #fffdf8; --lilac: #e7daf4; --peach: #ffceb4; --mint: #cfe5c8; --yellow: #f3d86e; }
+    @media (prefers-color-scheme: dark) { :root { --ink: #c0d7bd; --paper: #29372d; --lilac: #50405d; --peach: #b97656; --mint: #476947; --yellow: #c6a950; } }
+  </style>
+  <ellipse cx="160" cy="153" rx="104" ry="12" fill="var(--mint)" opacity=".35"/>
+  <g transform="rotate(-9 140 98)">
+    <rect x="65" y="33" width="126" height="112" rx="8" fill="var(--lilac)" stroke="var(--ink)" stroke-width="2"/>
+    <path d="M84 55h61M84 65h82M84 75h70" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" opacity=".45"/>
+  </g>
+  <g transform="rotate(7 179 98)">
+    <rect x="105" y="43" width="135" height="108" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+    <path d="M125 67h52M125 78h88M125 89h77M125 119h63M125 130h42" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" opacity=".45"/>
+    <path d="M125 100h70" stroke="var(--yellow)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M198 43h22v36l-11-7-11 7V43Z" fill="var(--peach)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M204 54h1M213 54h1M205 61q4 4 8 0" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <path d="M253 31v18M244 40h18M259 23l3-3M270 35l4-1" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M48 92v12M42 98h12" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="74" cy="20" r="4" fill="var(--peach)"/>
+  <path d="M262 128c-9-18-22-3-8 3l8 5 8-8c10-12-4-21-8 0Z" fill="var(--mint)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "zot-relay"
+version = "0.1.0"
+description = "Connect local agents to Zotero through MCP"
+requires-python = ">=3.10"
+dependencies = ["mcp==2.2.0"]
+license = "MIT"
+readme = "README.md"
+authors = [{name = "Akshith Gunasekaran"}]
+maintainers = [{name = "Akshith Gunasekaran"}]
+keywords = ["zotero", "javascript", "ai", "research"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.urls]
+Homepage = "https://github.com/akshithg/zot-relay"
+Repository = "https://github.com/akshithg/zot-relay"
+
+[project.scripts]
+zot-relay-mcp = "zot_relay.mcp:main"
+zot-relay-setup = "zot_relay.install:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/zot_relay"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+    "/scripts",
+    "/zotero-plugin",
+    "/README.md",
+    "/INSTALL.md",
+    "/LICENSE",
+    "/Makefile",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+# Leave line length to the formatter.
+ignore = ["E501"]
+
+[tool.ty.environment]
+python-version = "3.10"
+root = ["./src"]
