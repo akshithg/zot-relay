@@ -3,10 +3,6 @@
 For a local agent whose client supports stdio MCP. Zotero desktop must be on
 the same computer. Setup must leave the library unchanged.
 
-This flow is a local preview, tested on macOS. The public guide will be
-available after the new repository is created and these changes are on GitHub.
-For now, use the user-supplied checkout.
-
 ## Install
 
 Install this repository in a persistent Python environment. With uv:

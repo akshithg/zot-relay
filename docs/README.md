@@ -2,6 +2,11 @@
 
 GitHub Pages serves these HTML, CSS, and SVG files directly. No build is needed.
 
+The page introduces Zot Relay through researcher-focused examples. Keep full
+requirements, usage, safety, scope, and developer guidance in the repository
+README; keep the agent setup procedure in INSTALL.md. Link to those documents
+from the page rather than maintaining another complete guide.
+
 Preview from the repository root:
 
 ```console

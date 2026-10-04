@@ -2,72 +2,68 @@
 
 Connect your agent to Zotero.
 
-Zot Relay connects a local agent to your running Zotero. You describe a task; the
-agent writes JavaScript, Zot Relay runs it inside Zotero, and the agent receives the
-result. The connection uses stdio MCP.
+Describe a library task to your agent. It writes JavaScript, Zot Relay runs it
+inside your open Zotero, and the agent receives the result through MCP.
+Zot Relay supplies the connection; your agent supplies the model and the code.
 
-Zot Relay supplies the connection. It does not run a model, generate scripts, or
-decide how to organise your library.
+[Product page source](docs/index.html) ·
+[Installation guide for agents](INSTALL.md)
 
-## Install with your agent
+## Make a request
 
-Give your agent the installation guide and ask it to set up Zot Relay:
-
-> Install Zot Relay for this agent using
-> https://raw.githubusercontent.com/akshithg/zot-relay/main/INSTALL.md.
-> Verify the connection without changing my Zotero library.
-
-The agent needs local command access and a client that supports stdio MCP.
-It handles the Python environment, its client’s MCP configuration, and the
-connection check. You do not need to run terminal commands or edit settings
-yourself. Zotero desktop must be installed on the same computer.
-
-The agent installs the bridge through Zotero’s Plugins window when it has
-computer access. Otherwise it asks you to do that one step. Reload your
-client’s MCP connections when setup finishes, then ask:
-
-> Use Zot Relay to check that you can connect to Zotero. Do not change my library.
-
-[INSTALL.md](INSTALL.md) contains the agent’s procedure. This installation
-flow is a local preview; the public guide URL will work after this change is
-pushed to the new GitHub repository. For now, give the agent this
-checkout’s installation guide.
-Distribution stays on GitHub.
-
-The connection uses standard stdio MCP. Live verification has covered Codex
-desktop and Zotero 10.0.5 on macOS with Apple Silicon. Other clients and
-platforms have not been exercised live for this preview. Compatibility bounds
-are in [the bridge manifest](zotero-plugin/manifest.json).
-
-### Make a request
-
-Once connected, ask your agent to bring your reading notes together:
+Bring your reading notes together:
 
 > Gather my Zotero highlights and comments from “Thesis reading” into a Markdown
 > file, grouped by paper with Zotero links. Leave my library unchanged.
 
-For your reading group:
+Get ready for your reading group:
 
 > Add the papers tagged “journal-club” to a “Friday discussion” collection.
 > Keep them in their existing collections.
 
-To find gaps in your reading material:
+Find gaps in your reading material:
 
 > Which papers in “Thesis reading” have no PDF attached? List their titles and
 > DOIs without changing anything.
 
 Use your own collection and tag names. For the Markdown example, your agent
 reads the annotations through Zot Relay and saves the file with its local tools.
+These are example requests: what your agent can do depends on the code it writes
+and Zotero’s API. Zot Relay exposes one tool, `eval_zotero`.
 
-Your agent composes and executes the JavaScript through Zot Relay’s `eval_zotero` tool.
-There are no dedicated tagging, filing, or citation commands. What an agent
-can do depends on the code it writes and Zotero’s API.
+## Install with your agent
+
+You need:
+
+- Zotero desktop on the same computer as your agent.
+- An agent with local command access and a client that supports stdio MCP.
+
+Give your agent this request:
+
+> Install Zot Relay for this agent using
+> https://raw.githubusercontent.com/akshithg/zot-relay/main/INSTALL.md.
+> Verify the connection without changing my Zotero library.
+
+The agent follows [INSTALL.md](INSTALL.md) to install a persistent Python
+environment, configure its client, and check the connection. If it has computer
+access, it can install the bridge through **Zotero → Tools → Plugins**.
+Otherwise, it asks you to complete that step. Restart Zotero after installing
+the plugin, then reload your client’s MCP connections as needed.
+
+Once setup finishes, ask:
+
+> Use Zot Relay to check that you can connect to Zotero. Do not change my library.
+
+Keep Zotero open during use. Live verification has covered Codex desktop and
+Zotero 10.0.5 on macOS with Apple Silicon. Other clients and platforms have not
+been exercised live. The [bridge manifest](zotero-plugin/manifest.json) declares
+its Zotero compatibility bounds.
 
 ### Updates and removal
 
-Ask your agent to follow the installation guide again to update Zot Relay, or its
-removal instructions to disconnect it. The MCP program and Zotero plugin
-are updated separately. Keep Zotero running while using Zot Relay.
+Ask your agent to follow the [installation guide](INSTALL.md#updates-and-removal)
+to update Zot Relay or disconnect it. The MCP program and Zotero plugin are
+updated separately. Installation sources and release artifacts stay on GitHub.
 
 ## Safety
 
@@ -109,6 +105,9 @@ The project keeps these boundaries:
 Giving Zot Relay another job requires an explicit scope decision.
 
 ## Development
+
+<details>
+<summary>Local checks and the MCP / JavaScript interface</summary>
 
 Use Python 3.12+, uv, Make, and Node.js 22 for development:
 
@@ -163,6 +162,8 @@ cross-origin authorization. The fixed client header provides no authentication.
 Raw JavaScript bodies and chunked requests are rejected. Headers are limited
 to 16 KiB, bodies to 1 MiB, and receipt of a complete request to five seconds.
 These limits do not bound JavaScript execution.
+
+</details>
 
 ## Credits
 
